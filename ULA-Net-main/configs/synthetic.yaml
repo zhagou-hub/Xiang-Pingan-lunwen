@@ -1,0 +1,41 @@
+dataset: synthetic
+seed: 42
+prefer_cuda: true
+
+# Paper-aligned model (Fig.1 uses 3x3 local patch)
+patch_size: 3
+n_endmembers: 4
+model_dim: 128
+n_heads: 4
+epsilon: 0.2
+
+# Paper Table I
+alpha: 0.005
+beta: 0.01
+
+# Paper optimization (no weight decay stated -> 0)
+lr: 0.006
+weight_decay: 0.0
+epochs: 100
+batch_size: 100
+lr_step: 20
+lr_gamma: 0.99
+num_workers: 0
+eval_batch_size: 256
+n_vca_runs: 1
+n_experiments: 10
+mse_weight: 1.0
+
+# Paper synthetic: 70x70x200, SNR=30dB, scale in [0.75, 1.25]
+synthetic_dir: data/synthetic
+regenerate_synthetic: true
+synthetic:
+  height: 70
+  width: 70
+  n_bands: 200
+  length_scale: 8.0
+  scale_min: 0.75
+  scale_max: 1.25
+  snr_db: 30.0
+
+output_root: outputs
